@@ -3,7 +3,7 @@ import DetailsRecipe from '../Components/DetailsRecipe/DetailsRecipe.component';
 import RecipesList from '../Components/RecipesList/RecipesList.component';
 import { Route, Routes } from 'react-router-dom';
 import Header from '../Components/Header/Header.component';
-import { loadRecipes, loadSearchRecipe } from '../Components/Api/loadRecipes';
+import { loadRecipes, loadSearchRecipe } from '../Api/loadRecipes';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -58,7 +58,6 @@ const Home = () => {
   const searchRecipe = async () => {
     try {
       if (!search.length) return;
-
       setIsLoadingRecipesList(true);
 
       await loadSearchRecipe(search, setRecipesList);

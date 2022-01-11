@@ -1,3 +1,4 @@
+import { Fraction } from 'fractional';
 import React from 'react';
 import * as Ai from 'react-icons/ai';
 import * as Bs from 'react-icons/bs';
@@ -51,7 +52,9 @@ const DetailsRecipe = ({ recipes, isLoading }) => {
               {recipe.ingredients.map((ing, idx) => (
                 <li key={idx}>
                   <Bs.BsFillCheckCircleFill />
-                  <div>{ing.quantity}</div>
+                  <div>
+                    {ing.quantity ? new Fraction(ing.quantity).toString() : ''}
+                  </div>
                   <div>
                     <span>{ing.unit}</span>
                     {ing.description}
