@@ -4,6 +4,7 @@ import RecipesList from '../Components/RecipesList/RecipesList.component';
 import { Route, Routes } from 'react-router-dom';
 import Header from '../Components/Header/Header.component';
 import { loadRecipes, loadSearchRecipe } from '../Api/loadRecipes';
+import Pagination from '../Components/Pagination/Pagination.component';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -12,6 +13,18 @@ const Home = () => {
   const [search, setSearch] = useState('');
   const [isLoadingRecipes, setIsLoadingRecipes] = useState(false);
   const [isLoadingRecipesList, setIsLoadingRecipesList] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recipesPerPage, setRecipesPerPage] = useState(10);
+
+  // Get Current Recipes
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = recipesList.slice(
+    indexOfFirstRecipe,
+    indexOfLastRecipe
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Get the recipe id
   const handleChangeId = (id) => {
@@ -23,6 +36,7 @@ const Home = () => {
     setSearch(e.target.value);
   };
 
+  // Get the recipes by submit search
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -81,11 +95,19 @@ const Home = () => {
         handleSubmit={handleSubmit}
       />
 
+      <div></div>
+
       <div style={{ display: 'flex', justifyContent: 'space-around' }}>
         <RecipesList
-          recipesList={recipesList}
+          recipesList={currentRecipes}
           isLoading={isLoadingRecipes}
           handleChangeId={handleChangeId}
+        />
+
+        <Pagination
+          recipesPerPage={recipesPerPage}
+          totalRecipes={recipesList.length}
+          paginate={paginate}
         />
 
         <Routes>
