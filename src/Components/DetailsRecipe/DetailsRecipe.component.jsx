@@ -37,11 +37,6 @@ const DetailsRecipe = ({ recipes, isLoading }) => {
                 <Bs.BsPlusCircle />
               </div>
             </div>
-
-            <div>
-              <Bs.BsBookmark />
-              <Bs.BsBookmarkFill />
-            </div>
           </div>
 
           {/* Recipe Ingredients */}

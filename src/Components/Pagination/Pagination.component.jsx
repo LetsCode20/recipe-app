@@ -1,14 +1,15 @@
 import React from 'react';
+import { PaginationNav } from './Pagination.style';
 
 const Pagination = ({ recipesPerPage, totalRecipes, paginate }) => {
   const pageNumbers = [];
 
-  for (let i = 0; i < Math.ceil(totalRecipes / recipesPerPage); i++) {
+  for (let i = 1; i < Math.ceil(totalRecipes / recipesPerPage); i++) {
     pageNumbers.push(i);
   }
 
   return (
-    <nav>
+    <PaginationNav>
       <ul>
         {pageNumbers.map((pageNumber) => (
           <li key={pageNumber}>
@@ -16,7 +17,7 @@ const Pagination = ({ recipesPerPage, totalRecipes, paginate }) => {
           </li>
         ))}
       </ul>
-    </nav>
+    </PaginationNav>
   );
 };
 

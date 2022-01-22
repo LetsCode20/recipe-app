@@ -1,36 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
+import {
+  RecipesListContainer,
+  RecipesListMsg,
+  RecipesListSection,
+} from './RecipesList.style';
 
 const RecipesList = ({ recipesList, isLoading, handleChangeId }) => {
   return (
-    <section>
+    <RecipesListSection>
+      {/* Loading */}
       {isLoading && <Loading />}
-      {recipesList ? (
+
+      {/* Recipes List */}
+      {recipesList.length ? (
         recipesList.map((item, idx) => (
-          <div key={idx} onClick={() => handleChangeId(item.id)}>
+          <RecipesListContainer
+            key={idx}
+            onClick={() => handleChangeId(item.id)}
+          >
             <Link to={`/${item.id}`}>
               <div>
-                <img
-                  src={item.image_url}
-                  alt={item.title}
-                  width='200'
-                  height='200'
-                />
+                <img src={item.image_url} alt={item.title} />
               </div>
               <div>
-                <h2 style={{ width: '200px' }}>{item.title}</h2>
-                <p>{item.publisher}</p>
+                <h2>{item.title}</h2>
+                <span>{item.publisher}</span>
               </div>
             </Link>
-          </div>
+          </RecipesListContainer>
         ))
       ) : (
-        <div>
+        <RecipesListMsg>
           <p>Start by searching for a recipe.</p>
-        </div>
+        </RecipesListMsg>
       )}
-    </section>
+    </RecipesListSection>
   );
 };
 

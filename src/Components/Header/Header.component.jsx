@@ -1,16 +1,21 @@
 import React from 'react';
 import * as Bi from 'react-icons/bi';
 import * as Fi from 'react-icons/fi';
+import { HeaderContainer, HeaderForm, HeaderTitle } from './Header.style';
 
 const Header = ({ search, handleChange, handleSubmit }) => {
   return (
-    <header>
-      <div>
+    <HeaderContainer>
+      <HeaderTitle to='/'>
         <Bi.BiRestaurant />
         <h2>Recipe App</h2>
-      </div>
+      </HeaderTitle>
 
-      <form onSubmit={handleSubmit}>
+      <HeaderForm onSubmit={handleSubmit}>
+        <button onSubmit={handleSubmit}>
+          <Fi.FiSearch />
+        </button>
+
         <input
           type='text'
           name='search'
@@ -18,12 +23,8 @@ const Header = ({ search, handleChange, handleSubmit }) => {
           value={search}
           onChange={handleChange}
         />
-        <button onSubmit={handleSubmit}>
-          Search
-          <Fi.FiSearch />
-        </button>
-      </form>
-    </header>
+      </HeaderForm>
+    </HeaderContainer>
   );
 };
 

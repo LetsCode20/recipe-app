@@ -15,6 +15,7 @@ export const loadRecipes = async (recipeId, setRecipes) => {
     cookingTime: recipe.cooking_time,
     publisher: recipe.publisher,
     ingredients: recipe.ingredients,
+    isFavorite: false,
   };
 
   setRecipes([recipeData]);

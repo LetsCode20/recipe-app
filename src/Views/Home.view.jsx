@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { loadRecipes, loadSearchRecipe } from '../Api/loadRecipes';
+
 import DetailsRecipe from '../Components/DetailsRecipe/DetailsRecipe.component';
 import RecipesList from '../Components/RecipesList/RecipesList.component';
-import { Route, Routes } from 'react-router-dom';
 import Header from '../Components/Header/Header.component';
-import { loadRecipes, loadSearchRecipe } from '../Api/loadRecipes';
 import Pagination from '../Components/Pagination/Pagination.component';
+import { RecipesListPage } from './Home.styled';
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -14,7 +16,7 @@ const Home = () => {
   const [isLoadingRecipes, setIsLoadingRecipes] = useState(false);
   const [isLoadingRecipesList, setIsLoadingRecipesList] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [recipesPerPage, setRecipesPerPage] = useState(10);
+  const [recipesPerPage] = useState(10);
 
   // Get Current Recipes
   const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -88,16 +90,14 @@ const Home = () => {
   }, [search]);
 
   return (
-    <div>
+    <>
       <Header
         search={search}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
 
-      <div></div>
-
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <RecipesListPage>
         <RecipesList
           recipesList={currentRecipes}
           isLoading={isLoadingRecipes}
@@ -109,20 +109,23 @@ const Home = () => {
           totalRecipes={recipesList.length}
           paginate={paginate}
         />
+      </RecipesListPage>
 
-        <Routes>
-          <Route
-            path='/:recipeId'
-            element={
-              <DetailsRecipe
-                recipes={recipes}
-                isLoading={isLoadingRecipesList}
-              />
-            }
-          />
-        </Routes>
-      </div>
-    </div>
+      <Routes>
+        <Route path='/' element={<></>} />
+
+        <Route
+          path='/:recipeId'
+          element={
+            <DetailsRecipe
+              recipes={recipes}
+              isLoading={isLoadingRecipesList}
+              recId={recipeId}
+            />
+          }
+        />
+      </Routes>
+    </>
   );
 };
 
