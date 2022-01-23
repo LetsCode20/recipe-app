@@ -3,53 +3,54 @@ import React from 'react';
 import * as Ai from 'react-icons/ai';
 import * as Bs from 'react-icons/bs';
 import Loading from '../Loading/Loading';
+import {
+  DetailsRecipeFigure,
+  DetailsRecipeSection,
+  DetailsRecipeImage,
+  DetailsRecipeServing,
+  DetailsRecipeIngredients,
+  DetailsRecipeCook,
+} from './DetailsRecipe.style';
 
 const DetailsRecipe = ({ recipes, isLoading }) => {
   return (
-    <section>
+    <DetailsRecipeSection>
       {isLoading && <Loading />}
       {recipes.map((recipe, idx) => (
         <div key={idx}>
           {/* Recipe Header */}
-          <figure>
-            <img
-              src={recipe.image}
-              alt={recipe.title}
-              width='200'
-              height='200'
-            />
-            <figcaption>{recipe.title}</figcaption>
-          </figure>
+
+          <DetailsRecipeFigure>
+            <img src={recipe.image} alt={recipe.title} />
+            <h2>{recipe.title}</h2>
+          </DetailsRecipeFigure>
 
           {/* Cooking / Serving Recipe */}
-          <div>
+          <DetailsRecipeServing>
             <div>
-              <div>
-                <Ai.AiOutlineClockCircle />
-                {recipe.cookingTime} MINUTES
-              </div>
-              <div>
-                <Bs.BsPeople />
-                {recipe.servings} SERVING
-              </div>
-              <div>
-                <Ai.AiOutlineMinusCircle />
-                <Bs.BsPlusCircle />
-              </div>
+              <Ai.AiOutlineClockCircle />
+              {recipe.cookingTime} MINUTES
             </div>
-          </div>
+
+            <div>
+              <Bs.BsPeople />
+              {recipe.servings} SERVING
+            </div>
+          </DetailsRecipeServing>
 
           {/* Recipe Ingredients */}
-          <div>
-            <h2>RECIPE INGREDIENTS</h2>
+          <DetailsRecipeIngredients>
+            <h3>RECIPE INGREDIENTS</h3>
 
             <ul>
               {recipe.ingredients.map((ing, idx) => (
                 <li key={idx}>
                   <Bs.BsFillCheckCircleFill />
-                  <div>
-                    {ing.quantity ? new Fraction(ing.quantity).toString() : ''}
-                  </div>
+                  {ing.quantity ? (
+                    <div>{new Fraction(ing.quantity).toString()}</div>
+                  ) : (
+                    ''
+                  )}
                   <div>
                     <span>{ing.unit}</span>
                     {ing.description}
@@ -57,20 +58,20 @@ const DetailsRecipe = ({ recipes, isLoading }) => {
                 </li>
               ))}
             </ul>
-          </div>
+          </DetailsRecipeIngredients>
 
           {/* How To Cook */}
-          <div>
+          <DetailsRecipeCook>
             <h2>HOW TO COOK IT</h2>
             <p>
               This recipe was carefully designed and tested by{' '}
               <b>{recipe.publisher}</b>. Please check out directions at their
               website.
             </p>
-          </div>
+          </DetailsRecipeCook>
         </div>
       ))}
-    </section>
+    </DetailsRecipeSection>
   );
 };
 

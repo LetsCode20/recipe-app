@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Bi from 'react-icons/bi';
 import * as Fi from 'react-icons/fi';
+import { useParams } from 'react-router-dom';
 import { HeaderContainer, HeaderForm, HeaderTitle } from './Header.style';
 
 const Header = ({ search, handleChange, handleSubmit }) => {

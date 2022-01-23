@@ -28,15 +28,17 @@ export const HeaderForm = styled.form`
   align-items: center;
 
   input {
+    color: #fff;
     background: none;
     padding: 10px 20px;
-    border: 1px solid #ffa500;
-    box-shadow: 2px 2px 10px 0px rgba(255, 165, 0, 0.3);
-    -webkit-box-shadow: 2px 2px 10px 0px rgba(255, 165, 0, 0.3);
-    -moz-box-shadow: 2px 2px 10px 0px rgba(255, 165, 0, 0.3);
+    border: 1px solid #fff;
+    box-shadow: 2px 2px 10px 0px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: 2px 2px 10px 0px rgba(255, 255, 255, 0.3);
 
     ::placeholder {
       margin-right: -10px;
+      color: #fff;
     }
   }
 
@@ -48,7 +50,7 @@ export const HeaderForm = styled.form`
     svg {
       margin-right: -45px;
       margin-top: 2px;
-      color: #ffa500;
+      color: #fff;
     }
   }
 `;

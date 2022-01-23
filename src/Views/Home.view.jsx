@@ -97,22 +97,25 @@ const Home = () => {
         handleSubmit={handleSubmit}
       />
 
-      <RecipesListPage>
-        <RecipesList
-          recipesList={currentRecipes}
-          isLoading={isLoadingRecipes}
-          handleChangeId={handleChangeId}
-        />
-
-        <Pagination
-          recipesPerPage={recipesPerPage}
-          totalRecipes={recipesList.length}
-          paginate={paginate}
-        />
-      </RecipesListPage>
-
       <Routes>
-        <Route path='/' element={<></>} />
+        <Route
+          path='/'
+          element={
+            <RecipesListPage>
+              <RecipesList
+                recipesList={currentRecipes}
+                isLoading={isLoadingRecipes}
+                handleChangeId={handleChangeId}
+              />
+
+              <Pagination
+                recipesPerPage={recipesPerPage}
+                totalRecipes={recipesList.length}
+                paginate={paginate}
+              />
+            </RecipesListPage>
+          }
+        />
 
         <Route
           path='/:recipeId'

@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
 export const RecipesListSection = styled.section`
-  /* padding: 10px 0;
-  margin-left: 40px;
-  width: 20vw;
-background: #ffa500; */
+  position: relative;
 `;
 
 export const RecipesListContainer = styled.div`
@@ -14,11 +11,12 @@ export const RecipesListContainer = styled.div`
     text-decoration: none;
     color: #222;
     padding: 10px;
-    transition: background 0.3s linear, color 0.3s linear;
+    transition: background 0.3s linear;
 
     &:hover {
-      background: #ff7500;
-      color: #fff;
+      background-color: #fbab79;
+      background-image: linear-gradient(62deg, #f7ce99 0%, #fbab79 100%);
+      color: #444;
     }
   }
 
