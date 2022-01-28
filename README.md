@@ -11,4 +11,5 @@ If you want To visite Our Recipe App: <a href="https://yassine-recipe-app.netlif
 - Feel Free to search for your favorite recipes.
 - You will also find the ingredients of the recipes.
 - The API That I used [Forkify API](https://forkify-api.herokuapp.com/v2).
-- Hope you Enjoy It!
+- Hope you like it.
+- Follow me on instagram: <a href='https://www.instagram.com/yassinecode/' alt='yassinecode'>@yassinecode</a>
