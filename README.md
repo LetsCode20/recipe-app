@@ -2,7 +2,7 @@
 
 Recipe App is written in **React.js** & Styled Components
 
-If you want To visite Our Recipe App: <a href="https://yassine-recipe-app.netlify.app/" target="_blank">Recipe App</a>
+If you want To visite Our Recipe App: <a href="https://yassinerecipeapp.netlify.app/" target="_blank">Recipe App</a>
 
 ![Recipe App Home Preview](./src/assets/RecipeAppHome.png)
 ![Recipe App Details Preview](./src/assets/RecipeAppDetails.png)
